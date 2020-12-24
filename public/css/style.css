@@ -1,1 +1,12 @@
+* {
+  box-sizing: border-box;
+}
 
+main {
+  overflow: auto;
+}
+
+.rightAlign {
+  position: relative;
+  right: 0;
+}

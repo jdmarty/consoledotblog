@@ -1,60 +1,34 @@
 const router = require('express').Router();
-const { Project, User } = require('../models');
+const { User, Post, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
   try {
-    // Pass serialized data and session flag into template
-
-
-
-    res.render('homepage', { 
-      logged_in: req.session.logged_in,
-      features: true
-    });
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
-router.get('/project/:id', async (req, res) => {
-  try {
-    const projectData = await Project.findByPk(req.params.id, {
+    //retrieve all posts
+    const postsData = await Post.findAll({
+      //include user and comment
       include: [
+        { model: User, attributes: ['id', 'name'] },
         {
-          model: User,
-          attributes: ['name'],
+          model: Comment,
+          attributes: ['content', 'comment_date', 'updated_date'],
         },
       ],
+      //sort by most recent post
+      order: [['post_date', 'DESC']],
+      //limit set by query or defaults to 20
+      limit: parseInt(req.query.limit) || 20,
     });
-
-    const project = projectData.get({ plain: true });
-    // Serialize data so the template can read it
-    const projects = projectData.map((project) => project.get({ plain: true }));
-
-    res.render('project', {
-      ...project,
+    //serialize data
+    const posts = postsData.map((post) => {
+      obj = post.get({plain: true})
+      obj.leadSentence = obj.content.split('.')[0]+'.'
+      return obj
+    })
+    res.render('homepage', {
       logged_in: req.session.logged_in,
-    });
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
-// Use withAuth middleware to prevent access to route
-router.get('/profile', withAuth, async (req, res) => {
-  try {
-    // Find the logged in user based on the session ID
-    const userData = await User.findByPk(req.session.user_id, {
-      attributes: { exclude: ['password'] },
-      include: [{ model: Project }],
-    });
-
-    const user = userData.get({ plain: true });
-
-    res.render('profile', {
-      ...user,
-      logged_in: true
+      home: true,
+      posts,
     });
   } catch (err) {
     res.status(500).json(err);

@@ -13,8 +13,8 @@
 
 <body>
   <header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-      <a class="navbar-brand" href="#">Navbar</a>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+      <a class="navbar-brand" href="#">CONSOLE.BLOG</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -26,19 +26,9 @@
               {{#if home}}<span class="sr-only">(current)</span>{{/if}}
             </a>
           </li>
-          <li class="nav-item {{#if features}}active{{/if}}">
-            <a class="nav-link" href="#">Features
-              {{#if features}}<span class="sr-only">(current)</span>{{/if}}
-            </a>
-          </li>
-          <li class="nav-item {{#if pricing}}active{{/if}}">
-            <a class="nav-link" href="#">Pricing
-              {{#if pricing}}<span class="sr-only">(current)</span>{{/if}}
-            </a>
-          </li>
-          <li class="nav-item {{#if about}}active{{/if}}">
-            <a class="nav-link" href="#">About
-              {{#if about}}<span class="sr-only">(current)</span>{{/if}}
+          <li class="nav-item {{#if dashboard}}active{{/if}}">
+            <a class="nav-link" href="#">Dashboard
+              {{#if dashboard}}<span class="sr-only">(current)</span>{{/if}}
             </a>
           </li>
         </ul>
@@ -50,7 +40,7 @@
       </div>
     </nav>
   </header>
-  <main class="container container-fluid">
+  <main class="container-fluid bg-secondary">
     {{{ body }}}
   </main>
   <footer>
