@@ -3,7 +3,7 @@ const { User, Post, Comment } = require('../../models');
 
 //GET ROUTES==================================================
 //get all comments for a single post
-router.get('/:id', async (req, res) => {
+router.get('/post/:id', async (req, res) => {
   try {
     //retrieve all posts
     const commentData = await Comment.findAll({
@@ -21,7 +21,20 @@ router.get('/:id', async (req, res) => {
     res.status(400).json(err);
   }
 });
+//==========================================================
 
-//=====================================================
+//POST ROUTES===============================================
+//create a new comment
+router.post('/', async (req, res) => {
+  try {
+    //create a new Comment from the provided body
+    const newComment = await Comment.create(req.body);
+    res.status(201).json(newComment);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+//==========================================================
+
 
 module.exports = router;
