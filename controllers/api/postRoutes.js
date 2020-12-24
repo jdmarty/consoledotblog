@@ -10,10 +10,13 @@ router.get('/', async (req, res) => {
       //include user and comment
       include: [
         { model: User, attributes: ['id', 'name'] },
-        { model: Comment, attributes: ['content', 'comment_date', 'updated_date'] },
+        {
+          model: Comment,
+          attributes: ['content', 'comment_date', 'updated_date'],
+        },
       ],
       //sort by most recent post
-      order: [['update_date', 'DESC'], ['post_date', 'DESC']],
+      order: [['post_date', 'DESC']],
       //limit set by query or defaults to 20
       limit: parseInt(req.query.limit) || 20,
     });
