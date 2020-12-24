@@ -92,9 +92,16 @@ router.post('/', async (req, res) => {
 router.put('/:id', async (req, res) => {
   try {
     //update Post with new data at the provided id
-    const updatedPost = await Post.update(req.body, {
-      where: { id: req.params.id },
-    });
+    const updatedPost = await Post.update(
+      {
+        title: req.body.title,
+        content: req.body.content,
+        updated_date: new Date()
+      },
+      {
+        where: { id: req.params.id },
+      }
+    );
     //if no matching model was found, send message
     if (!updatedPost[0]) {
       res.status(404).json({ message: 'No post update performed' });
@@ -109,12 +116,13 @@ router.put('/:id', async (req, res) => {
     res.status(500).json(err);
   }
 });
+//=====================================================
 
 //DELETE ROUTES========================================
 //delete an existing post by id
 router.delete('/:id', async (req, res) => {
   try {
-    //delete a category at the provided id
+    //delete a Post at the provided id
     const deletedPost = await Post.destroy({
       where: { id: req.params.id },
     });
@@ -123,7 +131,7 @@ router.delete('/:id', async (req, res) => {
       res.status(404).json({ message: 'No post found with this id!' });
       return;
     }
-    //if a category was destroyed, send an object describing the changes
+    //if a Post was destroyed, send an object describing the changes
     res.status(200).json({
       message: `Post ${req.params.id} deleted`,
       deletedPost,

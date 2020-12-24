@@ -20,6 +20,9 @@ Comment.init(
       allowNull: false,
       defaultValue: DataTypes.NOW,
     },
+    updated_date: {
+      type: DataTypes.DATE,
+    },
     user_id: {
       type: DataTypes.INTEGER,
       references: {
