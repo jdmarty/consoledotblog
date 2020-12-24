@@ -1,6 +1,6 @@
 <!-- Loop over each object in the projects array -->
-<h1 class="text-center">Welcome to Console Dot Blog!</h1>
-
+<h1 class="text-center m-2">Welcome to Console Dot Blog!</h1>
+<hr>
 <div class="row">
   <div class="col-md-6 col-12">
     <h2 class="text-center">New Posts</h2>
@@ -8,7 +8,7 @@
       <div class="card my-2">
         <div class="card-header d-flex justify-content-between">
           <span class="lead m-0">{{post.title}}</span>
-          <span class="m-0">Posted by {{post.user.name}} on {{format_date post.post_date}}</span>
+          <span class="m-0 text-right">Posted by {{post.user.name}} on {{format_date post.post_date}}</span>
         </div>
         <div class="card-body">
           <p>{{first_sentence post.content}}</p>
@@ -24,7 +24,7 @@
       <div class="card my-2">
         <div class="card-header d-flex justify-content-between">
           <span class="lead m-0">{{post.title}}</span>
-          <span class="m-0">Updated by {{post.user.name}} on {{format_date post.post_date}}</span>
+          <span class="m-0 text-right">Updated by {{post.user.name}} on {{format_date post.post_date}}</span>
         </div>
         <div class="card-body">
           <p>{{first_sentence post.content}}</p>

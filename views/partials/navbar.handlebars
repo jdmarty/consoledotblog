@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+    <a class="navbar-brand" href="/">CONSOLE.BLOG</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarColor01">
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item {{#if home}}active{{/if}}">
+        <a class="nav-link" href="/">Home
+            {{#if home}}<span class="sr-only">(current)</span>{{/if}}
+        </a>
+        </li>
+        <li class="nav-item {{#if dashboard}}active{{/if}}">
+        <a class="nav-link" href="#">Dashboard
+            {{#if dashboard}}<span class="sr-only">(current)</span>{{/if}}
+        </a>
+        </li>
+    </ul>
+    {{#if logged_in}}
+    <span class="mx-2">Hello, {{user_name}}!</span>
+    <button class="btn btn-secondary my-2 my-sm-0" type="submit" id="logout">Logout</button>
+    {{else}}
+    <a href='/login'>
+        {{#if login}}<span class="sr-only">(current)</span>{{/if}}
+        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Login</button>
+    </a>
+    {{/if}}
+    </div>
+</nav>
