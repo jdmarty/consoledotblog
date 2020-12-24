@@ -8,7 +8,10 @@ router.get('/', async (req, res) => {
     //retrieve all posts
     const postData = await Post.findAll({
       //include user and comment
-      include: [{ model: User }, { model: Comment }],
+      include: [
+        { model: User, attributes: ['id', 'name'] },
+        { model: Comment },
+      ],
       //sort by most recent post
       order: [['post_date', 'DESC']],
       //limit set by query or defaults to 20
@@ -27,7 +30,10 @@ router.get('/post/:id', async (req, res) => {
     //retrieve a single post by id
     const postData = await Post.findByPk(req.params.id, {
       //include user and comment
-      include: [{ model: User }, { model: Comment }],
+      include: [
+        { model: User, attributes: ['id', 'name'] },
+        { model: Comment },
+      ],
     });
     //if nothing was retrieved, send an error message
     if (!postData) {
@@ -47,7 +53,10 @@ router.get('/user/:id', async (req, res) => {
     const postData = await Post.findAll({
       where: { user_id: req.params.id },
       //include user and comment
-      include: [{ model: User }, { model: Comment }],
+      include: [
+        { model: User, attributes: ['id', 'name'] },
+        { model: Comment },
+      ],
       //sort by most recent post
       order: [['post_date', 'DESC']],
       //limit set by query or defaults to 20
