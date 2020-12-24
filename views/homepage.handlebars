@@ -2,22 +2,36 @@
 <h1 class="text-center">Welcome to Console Dot Blog!</h1>
 
 <div class="row">
-  <div class="col align-self-center">
+  <div class="col-md-6 col-12">
+    <h2 class="text-center">New Posts</h2>
     {{#each posts as |post|}}
       <div class="card my-2">
         <div class="card-header d-flex justify-content-between">
           <span class="lead m-0">{{post.title}}</span>
-          {{#if post.updated_date}}
-          <span class="m-0">Updated by {{post.user.name}} on {{format_date post.updated_date}}</span>
-          {{else}}
           <span class="m-0">Posted by {{post.user.name}} on {{format_date post.post_date}}</span>
-          {{/if}}
         </div>
         <div class="card-body">
-          <p>{{post.leadSentence}}</p>
+          <p>{{first_sentence post.content}}</p>
           <a href="#" class="btn btn-primary">View Post</a>
         </div>
       </div>
+    {{/each}}
+  </div>
+  <div class="col-md-6 col-12">
+    <h2 class="text-center">Recently Updated Posts</h2>
+    {{#each posts as |post|}}
+      {{#if post.updated_date}}
+      <div class="card my-2">
+        <div class="card-header d-flex justify-content-between">
+          <span class="lead m-0">{{post.title}}</span>
+          <span class="m-0">Updated by {{post.user.name}} on {{format_date post.post_date}}</span>
+        </div>
+        <div class="card-body">
+          <p>{{first_sentence post.content}}</p>
+          <a href="#" class="btn btn-primary">View Post</a>
+        </div>
+      </div>
+      {{/if}}
     {{/each}}
   </div>
 </div>

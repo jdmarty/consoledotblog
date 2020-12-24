@@ -9,7 +9,7 @@ router.post('/create', async (req, res) => {
       where: { email: req.body.email },
     });
     //if there is a user with this email, send an error message and return
-    if (userData) {
+    if (existingUser) {
       res
         .status(400)
         .json({ message: 'Account with this username already exists, please try again' });
@@ -20,6 +20,7 @@ router.post('/create', async (req, res) => {
     //set loggedIn to true and save the user id in session
     req.session.save(() => {
       req.session.user_id = userData.id;
+      req.session.user_name = userData.name;
       req.session.logged_in = true;
       res.status(200).json(userData);
     });
@@ -52,6 +53,7 @@ router.post('/login', async (req, res) => {
     //set loggedIn to true and save the user id in session
     req.session.save(() => {
       req.session.user_id = userData.id;
+      req.session.user_name = userData.name;
       req.session.logged_in = true;
 
       res.json({ user: userData, message: 'You are now logged in!' });

@@ -1,42 +1,56 @@
-<div class="row">
-  <div class="col-md-6">
-    <h2>Login</h2>
+<div class="row justify-content-center p-0">
+  <div class="col-md-6 col-12 py-5 login-tab">	
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <a class="nav-link active" id="login-tab" data-bs-toggle="tab" href="#login" role="tab" aria-controls="login" aria-selected="true">Login</a>
+      </li>
+      <li class="nav-item" role="presentation">
+        <a class="nav-link" id="signup-tab" data-bs-toggle="tab" href="#signup" role="tab" aria-controls="signup" aria-selected="false">Signup</a>
+      </li>
+    </ul>
 
-    <form class="form login-form">
-      <div class="form-group">
-        <label for="email-login">email:</label>
-        <input class="form-input" type="text" id="email-login" />
+    <div class="tab-content bg-primary rounded border px-md-5 px-2" id="myTabContent">
+      <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="login-tab">
+        <form class="form login-form">
+          <div class="form-group">
+            <label class="form-label lead" for="email-login">Email:</label>
+            <input class="form-control login-input" type="text" id="email-login" />
+          </div>
+          <div class="form-group">
+            <label class="form-label lead" for="password-login">Password:</label>
+            <input class="form-control login-input" type="password" id="password-login" />
+          </div>
+          <div class="form-group">
+            <button class="btn btn-secondary" type="submit">Login</button>
+          </div>
+        </form>
       </div>
-      <div class="form-group">
-        <label for="password-login">password:</label>
-        <input class="form-input" type="password" id="password-login" />
+      
+      <div class="tab-pane fade" id="signup" role="tabpanel" aria-labelledby="signup-tab">
+        <form class="form signup-form">
+          <div class="form-group">
+            <label class="form-label lead" for="name-signup">Name:</label>
+            <input class="form-control login-input" type="text" id="name-signup" />
+          </div>
+          <div class="form-group">
+            <label class="form-label lead" for="email-signup">Email:</label>
+            <input class="form-control login-input" type="text" id="email-signup" />
+          </div>
+          <div class="form-group">
+            <label class="form-label lead" for="password-signup">Password:</label>
+            <input class="form-control login-input" type="password" id="password-signup" />
+          </div>
+          <div class="form-group">
+            <button class="btn btn-secondary" type="submit">Sign Up</button>
+          </div>
+        </form>
       </div>
-      <div class="form-group">
-        <button class="btn btn-primary" type="submit">login</button>
-      </div>
-    </form>
-  </div>
-  <div class="col-md-6">
-    <h2>Signup</h2>
 
-    <form class="form signup-form">
-      <div class="form-group">
-        <label for="name-signup">name:</label>
-        <input class="form-input" type="text" id="name-signup" />
-      </div>
-      <div class="form-group">
-        <label for="email-signup">email:</label>
-        <input class="form-input" type="text" id="email-signup" />
-      </div>
-      <div class="form-group">
-        <label for="password-signup">password:</label>
-        <input class="form-input" type="password" id="password-signup" />
-      </div>
-      <div class="form-group">
-        <button class="btn btn-primary" type="submit">signup</button>
-      </div>
-    </form>
+    </div>
   </div>
 </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
 <script src="./js/login.js"></script>

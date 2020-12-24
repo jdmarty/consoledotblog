@@ -2,9 +2,10 @@ const router = require('express').Router();
 const { User, Post, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 
+//homepage route
 router.get('/', async (req, res) => {
   try {
-    //retrieve all posts
+    //retrieve all new posts
     const postsData = await Post.findAll({
       //include user and comment
       include: [
@@ -19,14 +20,12 @@ router.get('/', async (req, res) => {
       //limit set by query or defaults to 20
       limit: parseInt(req.query.limit) || 20,
     });
-    //serialize data
-    const posts = postsData.map((post) => {
-      obj = post.get({plain: true})
-      obj.leadSentence = obj.content.split('.')[0]+'.'
-      return obj
-    })
+    //serialize new post data
+    const posts = postsData.map((post) => post.get({ plain: true }));
+
     res.render('homepage', {
       logged_in: req.session.logged_in,
+      user_name: req.session.user_name,
       home: true,
       posts,
     });
@@ -35,6 +34,7 @@ router.get('/', async (req, res) => {
   }
 });
 
+//login page route
 router.get('/login', (req, res) => {
   // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
@@ -42,7 +42,9 @@ router.get('/login', (req, res) => {
     return;
   }
 
-  res.render('login');
+  res.render('login', {
+    login: true
+  });
 });
 
 module.exports = router;

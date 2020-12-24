@@ -8,8 +8,10 @@ module.exports = {
     // Format date as MM/DD/YYYY
     return date.toLocaleString(undefined, options);
   },
-  format_amount: (amount) => {
-    // format large numbers with commas
-    return parseInt(amount).toLocaleString();
+  first_sentence: (content) => {
+    // get the first sentence of a post
+    const firstSentence = content.match(/^.*?[\.!\?]/);
+    if (firstSentence) return firstSentence[0]
+    return ''
   },
 };
