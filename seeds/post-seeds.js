@@ -15,24 +15,24 @@ const posts = [
   {
     title: 'The Lions are bad and here is why',
     content: 'I mean just look at them.',
-    user_id: 2,
+    user_id: 1,
   },
   {
     title: 'Building cars',
     content:
       'Ford Motor Company, commonly known as Ford, is an American multinational automaker that has its main headquarters in Dearborn, Michigan, a suburb of Detroit. It was founded by Henry Ford and incorporated on June 16, 1903. The company sells automobiles and commercial vehicles under the Ford brand, and most luxury cars under the Lincoln brand. Ford also owns Brazilian SUV manufacturer Troller, an 8% stake in Aston Martin of the United Kingdom and a 32% stake in Jiangling Motors.[7] It also has joint-ventures in China (Changan Ford), Taiwan (Ford Lio Ho), Thailand (AutoAlliance Thailand), Turkey (Ford Otosan), and Russia (Ford Sollers). The company is listed on the New York Stock Exchange and is controlled by the Ford family; they have minority ownership but the majority of the voting power.',
-    user_id: 2,
+    user_id: 1,
   },
   {
     title: 'Random Basketball Stuff',
     content: 'I like the Pistons even though they are also bad.',
-    user_id: 2,
+    user_id: 1,
   },
   {
     title: 'Optical transistor',
     content:
       'An optical transistor, also known as an optical switch or a light valve, is a device that switches or amplifies optical signals.',
-    user_id: 3,
+    user_id: 1,
   },
 ];
 

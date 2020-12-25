@@ -12,6 +12,6 @@ module.exports = {
     // get the first sentence of a post
     const firstSentence = content.match(/^.*?[\.!\?]/);
     if (firstSentence) return firstSentence[0]
-    return ''
+    return content
   },
 };

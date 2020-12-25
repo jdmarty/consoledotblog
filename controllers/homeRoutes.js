@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
         { model: User, attributes: ['id', 'name'] },
         {
           model: Comment,
-          attributes: ['content', 'comment_date', 'updated_date'],
+          attributes: ['content', 'comment_date'],
         },
       ],
       //sort by most recent post
@@ -34,9 +34,41 @@ router.get('/', async (req, res) => {
   }
 });
 
+//dashboard route
+router.get('/dashboard', withAuth, async (req, res) => {
+  //get recent posts made by this user
+  const userPostsData = await Post.findAll({
+    where: { user_id: req.session.user_id },
+    //limit set by query or defaults to 20
+    limit: parseInt(req.query.limit) || 20,
+    order: [['post_date', 'DESC']],
+  });
+  const userPosts = userPostsData.map(post => post.get({ plain: true }));
+
+  //get recent comments made by this user
+  const userCommentsData = await Comment.findAll({
+    where: { user_id: req.session.user_id },
+    //include information about original post
+    include: { model: Post },
+    //limit set by query or defaults to 20
+    limit: parseInt(req.query.limit) || 20,
+    order: [['comment_date', 'DESC']],
+  });
+  const userComments = userCommentsData.map((comm) => comm.get({ plain: true }));
+
+  //send retrieved data
+  res.render('dashboard', {
+    logged_in: req.session.logged_in,
+    user_name: req.session.user_name,
+    userPosts,
+    userComments,
+    dashboard: true,
+  });
+})
+
 //login page route
 router.get('/login', (req, res) => {
-  // If the user is already logged in, redirect the request to another route
+  // If the user is already logged in, redirect the request to homepage
   if (req.session.logged_in) {
     res.redirect('/');
     return;

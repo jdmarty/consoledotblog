@@ -1,0 +1,8 @@
+.dash-posts, .dash-comments {
+    max-height: 67vh;
+    overflow: auto;
+}
+
+.post-field {
+    height: fit-content
+};

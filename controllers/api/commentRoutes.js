@@ -44,7 +44,6 @@ router.put('/:id', async (req, res) => {
     const updatedComment = await Comment.update(
         {
             content: req.body.content,
-            updated_date: new Date()
         }, 
         {
             where: { id: req.params.id },

@@ -12,6 +12,11 @@ const comments = [
     post_id: 1,
   },
   {
+    content: 'I Like this thing',
+    user_id: 3,
+    post_id: 5,
+  },
+  {
     content: 'Hey Kyle, I think you just posted this from Wikipedia?',
     user_id: 1,
     post_id: 4,

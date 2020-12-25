@@ -1,0 +1,58 @@
+<!-- Loop over each object in the projects array -->
+<h1 class="text-center m-2">My Dashboard</h1>
+<hr>
+<div class="row p-2 dash-content">
+    <div class="col-lg-6 col-12 bg-primary text-white rounded py-2 my-0 post-field">
+        <h2 class="text-center">Create a Post</h2>
+        <form>
+            <div>
+                <label for="title" class="form-label lead">Title</label>
+                <input type="text" class="form-control" id="title" placeholder="Title">
+            </div>
+            <div class="mb-3">
+                <label for="title" class="form-label lead">Content</label>
+                <textarea type="text" class="form-control" id="title" rows="12" placeholder="What's up?"></textarea>
+            </div>
+            <button type="submit" class="btn btn-secondary">Post</button>
+        </form>
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm-12">
+        <h2 class="text-center">My Posts</h2>
+        <div class="dash-posts">
+            {{#each userPosts as |post|}}
+            <div class="card my-2">
+                <div class="card-header d-flex justify-content-between">
+                    <span class="lead m-0">{{post.title}}</span>
+                    <span class="m-0 text-right">{{format_date post.post_date}}</span>
+                </div>
+                <div class="card-body">
+                    <p>{{first_sentence post.content}}</p>
+                    <a href="#" class="btn btn-primary">View</a>
+                    <a href="#" class="btn btn-primary">Edit</a>
+                    <a href="#" class="btn btn-primary">Delete</a>
+                </div>
+
+            </div>
+            {{/each}}
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm-12">
+        <h2 class="text-center">My Comments</h2>
+        <div class="dash-comments">
+            {{#each userComments as |comment|}}
+            <div class="card my-2">
+                <div class="card-header d-flex justify-content-between">
+                    <span class="lead m-0">{{comment.post.title}}</span>
+                    <span class="m-0 text-right">{{format_date comment.comment_date}}</span>
+                </div>
+                <div class="card-body">
+                    <p>{{first_sentence comment.content}}</p>
+                    <a href="#" class="btn btn-primary">View</a>
+                    <a href="#" class="btn btn-primary">Delete</a>
+                </div>
+
+            </div>
+            {{/each}}
+        </div>
+    </div>
+</div>
