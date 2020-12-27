@@ -71,7 +71,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 })
-
+//view post route
 router.get('/view/:id', async (req, res) => {
   try {
     //get a single post by id

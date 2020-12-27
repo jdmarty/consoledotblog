@@ -28,15 +28,11 @@ router.get('/', async (req, res) => {
 });
 
 //get a post by id
-router.get('/post/:id', async (req, res) => {
+router.get('/:id', async (req, res) => {
   try {
     //retrieve a single post by id
     const postData = await Post.findByPk(req.params.id, {
       //include user and comment
-      include: [
-        { model: User, attributes: ['id', 'name'] },
-        { model: Comment },
-      ],
     });
     //if nothing was retrieved, send an error message
     if (!postData) {
@@ -49,32 +45,6 @@ router.get('/post/:id', async (req, res) => {
   }
 });
 
-//get all posts for a single user
-router.get('/user/:id', async (req, res) => {
-  try {
-    //retrieve all posts by user id
-    const postData = await Post.findAll({
-      where: { user_id: req.params.id },
-      //include user and comment
-      include: [
-        { model: User, attributes: ['id', 'name'] },
-        { model: Comment },
-      ],
-      //sort by most recent post
-      order: [['post_date', 'DESC']],
-      //limit set by query or defaults to 20
-      limit: parseInt(req.query.limit) || 20,
-    });
-    //if nothing was retrieved, send an error message
-    if (!postData[0]) {
-      res.status(404).json({ message: 'No posts found for this user!' });
-      return;
-    }
-    res.status(200).json(postData);
-  } catch (err) {
-    res.status(400).json(err);
-  }
-});
 //=====================================================
 
 //POST ROUTES==========================================

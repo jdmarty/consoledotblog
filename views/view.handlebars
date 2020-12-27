@@ -13,7 +13,7 @@
             {{else}}
             <span class="m-0 text-right">Posted by {{post.user.name}} on {{format_date post.post_date}}</span>
             {{/if}}
-            <span>x</span>
+            <span id="delete-post" class="d-none">x</span>
         </div>
     </div>
     <hr>
@@ -23,12 +23,12 @@
     <h2>Comments</h2>
     {{#each comments as |comment|}}
     <div class="card my-2">
-        <div class="card-body">
-            <p>comment</p>
+        <div class="card-body pb-0">
+            <p>{{comment.content}}</p>
         </div>
         <div class="card-footer d-flex justify-content-between">
-            <span>Date</span>
-            <span>User</span>
+            <span class="m-0 text-right">{{comment.user.name}} - {{format_date comment.comment_date}}</span>
+            <span id="delete-comment" class="d-none">x</span>
         </div>
     </div>
     {{/each}}
