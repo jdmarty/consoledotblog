@@ -62,6 +62,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
     //send retrieved data
     res.render('dashboard', {
       logged_in: req.session.logged_in,
+      user_id: req.session.user_id,
       user_name: req.session.user_name,
       userPosts,
       userComments,

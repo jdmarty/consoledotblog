@@ -11,7 +11,6 @@ const editPostHandler = async (event) => {
     //retrieve data for this post
     const apiUrl = '/api/posts/'+event.target.dataset.postid
     const postData = await $.get(apiUrl);
-    console.log(postData)
     //update DOM elements
     $banner.text('Update this Post');
     $title.val(postData.title);
@@ -21,9 +20,29 @@ const editPostHandler = async (event) => {
     $cancelButton.removeClass('d-none');
 }
 
-//handler for post button
-const createPost = async (event) => {
+//handler for delete button on posts
+const deletePostHandler = async (event) => {
     
 }
 
-$('.edit-post-button').on('click', editPostHandler)
+//handler for post button
+const createPost = async (event) => {
+    event.preventDefault();
+    //identify data for post body
+    const title = $title.val().trim();
+    const content = $content.val().trim();
+    const user_id = $createButton.attr('data-userId');
+    //create a post request if all data is present
+    if (title.length && content.length) {
+        const body = { title, content, user_id };
+        const newPostData = await $.post('/api/posts', body);
+        console.log(newPostData)
+        //navigate back to the dashboard
+        document.location.replace('/dashboard');
+    }
+}
+
+
+//attach event listeners
+$createButton.on('click', createPost);
+$('.edit-post-button').on('click', editPostHandler);
