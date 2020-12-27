@@ -69,7 +69,8 @@ router.put('/:id', async (req, res) => {
       {
         title: req.body.title,
         content: req.body.content,
-        updated_date: new Date()
+        updated_date: new Date(),
+        recent_date: new Date()
       },
       {
         where: { id: req.params.id },

@@ -27,6 +27,10 @@ Post.init(
     updated_date: {
       type: DataTypes.DATE,
     },
+    recent_date: {
+      type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW,
+    },
     user_id: {
       type: DataTypes.INTEGER,
       references: {

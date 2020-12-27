@@ -5,7 +5,15 @@ module.exports = {
       month: 'long',
       day: 'numeric',
     };
-    // Format date as MM/DD/YYYY
+    return date.toLocaleString(undefined, options);
+  },
+
+  format_dateShort: (date) => {
+    const options = {
+      year: 'numeric',
+      month: 'numeric',
+      day: 'numeric',
+    };
     return date.toLocaleString(undefined, options);
   },
   first_sentence: (content) => {

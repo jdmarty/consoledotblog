@@ -5,7 +5,7 @@ const withAuth = require('../utils/auth');
 //homepage route
 router.get('/', async (req, res) => {
   try {
-    //retrieve all new posts
+    //retrieve all posts and sort by post date
     const postsData = await Post.findAll({
       //include user and comment
       include: [
@@ -16,13 +16,13 @@ router.get('/', async (req, res) => {
         },
       ],
       //sort by most recent post
-      order: [['post_date', 'DESC']],
+      order: [['recent_date', 'DESC']],
       //limit set by query or defaults to 20
       limit: parseInt(req.query.limit) || 20,
     });
     //serialize new post data
     const posts = postsData.map((post) => post.get({ plain: true }));
-
+    //send the new data
     res.render('homepage', {
       logged_in: req.session.logged_in,
       user_name: req.session.user_name,
@@ -42,7 +42,10 @@ router.get('/dashboard', withAuth, async (req, res) => {
       where: { user_id: req.session.user_id },
       //limit set by query or defaults to 20
       limit: parseInt(req.query.post_limit) || 20,
-      order: [['post_date', 'DESC']],
+      order: [
+        ['updated_date', 'DESC'],
+        ['post_date', 'DESC'],
+      ],
     });
     const userPosts = userPostsData.map((post) => post.get({ plain: true }));
 

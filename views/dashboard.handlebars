@@ -22,9 +22,14 @@
         <div class="dash-posts">
             {{#each userPosts as |post|}}
             <div class="card my-2">
-                <div class="card-header d-flex justify-content-between">
+                <div class="card-header d-flex justify-content-between px-2">
                     <span class="lead m-0">{{post.title}}</span>
-                    <span class="m-0 text-right">{{format_date post.post_date}}</span>
+                    {{#if post.updated_date}}
+                    <span class="m-0 text-right">{{format_dateShort post.updated_date}}</span>
+                    {{else}}
+                    <span class="m-0 text-right">{{format_dateShort post.post_date}}</span>
+                    {{/if}}
+                    
                 </div>
                 <div class="card-body">
                     <p>{{first_sentence post.content}}</p>
@@ -42,9 +47,9 @@
         <div class="dash-comments">
             {{#each userComments as |comment|}}
             <div class="card my-2">
-                <div class="card-header d-flex justify-content-between">
+                <div class="card-header d-flex justify-content-between px-2">
                     <span class="lead m-0">{{comment.post.title}}</span>
-                    <span class="m-0 text-right">{{format_date comment.comment_date}}</span>
+                    <span class="m-0 text-right">{{format_dateShort comment.comment_date}}</span>
                 </div>
                 <div class="card-body">
                     <p>{{first_sentence comment.content}}</p>
