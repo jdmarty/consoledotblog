@@ -1,0 +1,14 @@
+<div class="card my-2">
+    <div class="card-header d-flex justify-content-between">
+        <span class="lead m-0">{{title}}</span>
+        {{#if updated_date}}
+        <span class="m-0 text-right">Updated by {{user.name}} on {{format_date post_date}}</span>
+        {{else}}
+        <span class="m-0 text-right">Posted by {{user.name}} on {{format_date post_date}}</span>
+        {{/if}}
+    </div>
+    <div class="card-body">
+        <p>{{first_sentence content}}</p>
+        <a href="/view/{{post.id}}" class="btn btn-primary">View Post</a>
+    </div>
+</div>

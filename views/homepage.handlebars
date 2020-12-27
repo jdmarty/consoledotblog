@@ -5,37 +5,14 @@
   <div class="col-md-6 col-12">
     <h2 class="text-center">All Posts</h2>
     {{#each posts as |post|}}
-      <div class="card my-2">
-        <div class="card-header d-flex justify-content-between">
-          <span class="lead m-0">{{post.title}}</span>
-          {{#if post.updated_date}}
-            <span class="m-0 text-right">Updated by {{post.user.name}} on {{format_date post.post_date}}</span>
-          {{else}}
-            <span class="m-0 text-right">Posted by {{post.user.name}} on {{format_date post.post_date}}</span>
-          {{/if}}
-          
-        </div>
-        <div class="card-body">
-          <p>{{first_sentence post.content}}</p>
-          <a href="#" class="btn btn-primary">View Post</a>
-        </div>
-      </div>
+    {{> homePost}}
     {{/each}}
   </div>
   <div class="col-md-6 col-12">
     <h2 class="text-center">Recently Updated Posts</h2>
     {{#each posts as |post|}}
       {{#if post.updated_date}}
-      <div class="card my-2">
-        <div class="card-header d-flex justify-content-between">
-          <span class="lead m-0">{{post.title}}</span>
-          <span class="m-0 text-right">Updated by {{post.user.name}} on {{format_date post.post_date}}</span>
-        </div>
-        <div class="card-body">
-          <p>{{first_sentence post.content}}</p>
-          <a href="#" class="btn btn-primary">View Post</a>
-        </div>
-      </div>
+      {{> homePost}}
       {{/if}}
     {{/each}}
   </div>
