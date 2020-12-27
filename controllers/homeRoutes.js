@@ -36,34 +36,65 @@ router.get('/', async (req, res) => {
 
 //dashboard route
 router.get('/dashboard', withAuth, async (req, res) => {
-  //get recent posts made by this user
-  const userPostsData = await Post.findAll({
-    where: { user_id: req.session.user_id },
-    //limit set by query or defaults to 20
-    limit: parseInt(req.query.limit) || 20,
-    order: [['post_date', 'DESC']],
-  });
-  const userPosts = userPostsData.map(post => post.get({ plain: true }));
+  try {
+    //get recent posts made by this user
+    const userPostsData = await Post.findAll({
+      where: { user_id: req.session.user_id },
+      //limit set by query or defaults to 20
+      limit: parseInt(req.query.post_limit) || 20,
+      order: [['post_date', 'DESC']],
+    });
+    const userPosts = userPostsData.map((post) => post.get({ plain: true }));
 
-  //get recent comments made by this user
-  const userCommentsData = await Comment.findAll({
-    where: { user_id: req.session.user_id },
-    //include information about original post
-    include: { model: Post },
-    //limit set by query or defaults to 20
-    limit: parseInt(req.query.limit) || 20,
-    order: [['comment_date', 'DESC']],
-  });
-  const userComments = userCommentsData.map((comm) => comm.get({ plain: true }));
+    //get recent comments made by this user
+    const userCommentsData = await Comment.findAll({
+      where: { user_id: req.session.user_id },
+      //include information about original post
+      include: { model: Post },
+      //limit set by query or defaults to 20
+      limit: parseInt(req.query.comment_lit) || 20,
+      order: [['comment_date', 'DESC']],
+    });
+    const userComments = userCommentsData.map((comm) =>
+      comm.get({ plain: true })
+    );
 
-  //send retrieved data
-  res.render('dashboard', {
-    logged_in: req.session.logged_in,
-    user_name: req.session.user_name,
-    userPosts,
-    userComments,
-    dashboard: true,
-  });
+    //send retrieved data
+    res.render('dashboard', {
+      logged_in: req.session.logged_in,
+      user_name: req.session.user_name,
+      userPosts,
+      userComments,
+      dashboard: true,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+})
+
+router.get('/view/:id', async (req, res) => {
+  try {
+    //get a single post by id
+    const postData = await Post.findByPk(req.params.id, {
+      include: { model: User, attributes: ['id', 'name'] },
+    });
+    const post = postData.get({ plain: true });
+    //get all comments for a single post
+    const commentsData = await Comment.findAll({
+      where: { post_id: req.params.id },
+      include: { model: User, attributes: ['id', 'name'] },
+    });
+    const comments = commentsData.map((comm) => comm.get({ plain: true }));
+    //send the retrieved data
+    res.render('view', {
+      logged_in: req.session.logged_in,
+      user_name: req.session.user_name,
+      post,
+      comments,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
 })
 
 //login page route
