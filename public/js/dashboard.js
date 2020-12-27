@@ -8,7 +8,7 @@ const $cancelButton = $('#cancel-update-button');
 
 //handler for edit button on posts
 const editPostHandler = async (event) => {
-    //retrieve data for this post
+    //retrieve data for this post with get request
     const apiUrl = '/api/posts/'+event.target.dataset.postid
     const postData = await $.get(apiUrl);
     //update DOM elements
@@ -22,7 +22,13 @@ const editPostHandler = async (event) => {
 
 //handler for delete button on posts
 const deletePostHandler = async (event) => {
-    
+    //send delete request
+    const apiUrl = '/api/posts/' + event.target.dataset.postid;
+    await $.ajax(apiUrl, {
+        method: "DELETE"
+    });
+    //navigate back to the dashboard
+    document.location.replace('/dashboard');
 }
 
 //handler for post button
@@ -35,8 +41,7 @@ const createPost = async (event) => {
     //create a post request if all data is present
     if (title.length && content.length) {
         const body = { title, content, user_id };
-        const newPostData = await $.post('/api/posts', body);
-        console.log(newPostData)
+        await $.post('/api/posts', body);
         //navigate back to the dashboard
         document.location.replace('/dashboard');
     }
@@ -46,3 +51,4 @@ const createPost = async (event) => {
 //attach event listeners
 $createButton.on('click', createPost);
 $('.edit-post-button').on('click', editPostHandler);
+$('.delete-post-button').on('click', deletePostHandler);
