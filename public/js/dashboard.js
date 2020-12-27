@@ -68,6 +68,13 @@ const updatePost = async (event) => {
   }
 };
 
+//handler for cancel button
+const cancelUpdate = async (event) => {
+  event.preventDefault();
+  //navigate back to the dashboard
+  document.location.replace('/dashboard');
+}
+
 //attach event listeners
 $createButton.on('click', createPost);
 $updateButton.on('click', updatePost);

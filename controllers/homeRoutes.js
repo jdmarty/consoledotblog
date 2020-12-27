@@ -42,10 +42,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
       where: { user_id: req.session.user_id },
       //limit set by query or defaults to 20
       limit: parseInt(req.query.post_limit) || 20,
-      order: [
-        ['updated_date', 'DESC'],
-        ['post_date', 'DESC'],
-      ],
+      order: [['recent_date', 'DESC']],
     });
     const userPosts = userPostsData.map((post) => post.get({ plain: true }));
 
@@ -76,7 +73,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
   }
 })
 //view post route
-router.get('/view/:id', async (req, res) => {
+router.get('/view-post/:id', async (req, res) => {
   try {
     //get a single post by id
     const postData = await Post.findByPk(req.params.id, {
@@ -90,11 +87,13 @@ router.get('/view/:id', async (req, res) => {
     });
     const comments = commentsData.map((comm) => comm.get({ plain: true }));
     //send the retrieved data
-    res.render('view', {
+    res.render('view-post', {
       logged_in: req.session.logged_in,
+      user_id: req.session.user_id,
       user_name: req.session.user_name,
       post,
       comments,
+      viewPost: true
     });
   } catch (err) {
     res.status(500).json(err);

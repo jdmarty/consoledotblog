@@ -13,7 +13,6 @@
             {{else}}
             <span class="m-0 text-right">Posted by {{post.user.name}} on {{format_date post.post_date}}</span>
             {{/if}}
-            <span id="delete-post" class="d-none">x</span>
         </div>
     </div>
     <hr>
@@ -28,12 +27,12 @@
         </div>
         <div class="card-footer d-flex justify-content-between">
             <span class="m-0 text-right">{{comment.user.name}} - {{format_date comment.comment_date}}</span>
-            <span id="delete-comment" class="d-none">x</span>
         </div>
     </div>
     {{/each}}
+    <p>Add Comment</p>
   </div>
 </div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+
