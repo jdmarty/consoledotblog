@@ -27,38 +27,11 @@ router.get('/post/:id', async (req, res) => {
 //create a new comment
 router.post('/', async (req, res) => {
   try {
+    //attach user id to request body
+    req.body.user_id = req.session.user_id
     //create a new Comment from the provided body
     const newComment = await Comment.create(req.body);
     res.status(201).json(newComment);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-//==========================================================
-
-//PUT ROUTES================================================
-//update an existing comment
-router.put('/:id', async (req, res) => {
-  try {
-    //update comment with new data at the provided id
-    const updatedComment = await Comment.update(
-        {
-            content: req.body.content,
-        }, 
-        {
-            where: { id: req.params.id },
-        }
-    );
-    //if no matching model was found, send message
-    if (!updatedComment[0]) {
-      res.status(404).json({ message: 'No post update performed' });
-      return;
-    }
-    //if an update was performed, send an object describing the changes
-    res.status(200).json({
-      message: `Comment ${req.params.id} updated`,
-      commentsUpdated: updatedComment[0],
-    });
   } catch (err) {
     res.status(500).json(err);
   }

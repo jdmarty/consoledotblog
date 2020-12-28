@@ -72,6 +72,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 })
+
 //view post route
 router.get('/view-post/:id', async (req, res) => {
   try {
@@ -84,6 +85,7 @@ router.get('/view-post/:id', async (req, res) => {
     const commentsData = await Comment.findAll({
       where: { post_id: req.params.id },
       include: { model: User, attributes: ['id', 'name'] },
+      order: [['comment_date', 'DESC']]
     });
     const comments = commentsData.map((comm) => comm.get({ plain: true }));
     //send the retrieved data

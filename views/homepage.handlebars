@@ -2,13 +2,13 @@
 <h1 class="text-center m-2">Welcome to Console Dot Blog!</h1>
 <hr>
 <div class="row">
-  <div class="col-md-6 col-12">
+  <div class="col-md-6 col-12 px-0 px-md-3">
     <h2 class="text-center">All Posts</h2>
     {{#each posts as |post|}}
     {{> homePost}}
     {{/each}}
   </div>
-  <div class="col-md-6 col-12">
+  <div class="col-md-6 col-12 px-0 px-md-3">
     <h2 class="text-center">Recently Updated Posts</h2>
     {{#each posts as |post|}}
       {{#if post.updated_date}}

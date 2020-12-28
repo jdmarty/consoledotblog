@@ -51,6 +51,8 @@ router.get('/:id', async (req, res) => {
 //create a new post
 router.post('/', async (req, res) => {
   try {
+    //attach current user id to request body
+    req.body.user_id = req.session.user_id
     //create a new Post from the provided body
     const newPost = await Post.create(req.body);
     res.status(201).json(newPost);

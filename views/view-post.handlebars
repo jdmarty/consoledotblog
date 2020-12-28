@@ -1,5 +1,5 @@
 <div class="row justify-content-center p-0">
-  <div class="col-12">	
+  <div class="col-12 px-0 px-md-3">	
     <div class="card my-2">
         <div class="card-header">
             <h2 class="display-4 text-center m-0">{{post.title}}</h2>
@@ -9,28 +9,34 @@
         </div>
         <div class="card-footer d-flex justify-content-between">
             {{#if post.updated_date}}
-             <span class="m-0 text-right">Posted by {{post.user.name}} on {{format_date post.updated_date}}</span>
+             <span class="m-0 text-left">Updated by {{post.user.name}} on {{format_date post.updated_date}}</span>
             {{else}}
-            <span class="m-0 text-right">Posted by {{post.user.name}} on {{format_date post.post_date}}</span>
+            <span class="m-0 text-left">Posted by {{post.user.name}} on {{format_date post.post_date}}</span>
             {{/if}}
+            <button class="btn btn-primary" id="leave-comment">Leave Comment</button>
         </div>
     </div>
     <hr>
   </div>
 
-  <div class="col-12 px-5">
-    <h2>Comments</h2>
+  <div class="col-12 px-2 px-md-5">
+    <div class="card my-2 d-none" id="new-comment">
+        <textarea class="form-control" rows="5" placeholder="Leave a comment here" id="comment-content"></textarea>
+        <div class="card-footer py-1">
+            <button data-postid="{{post.id}}" class="btn btn-primary" id="create-comment">Submit</button>
+            <a href="/view-post/{{post.id}}" class="btn btn-primary">Cancel</a>
+        </div>
+    </div>
     {{#each comments as |comment|}}
     <div class="card my-2">
         <div class="card-body pb-0">
             <p>{{comment.content}}</p>
         </div>
-        <div class="card-footer d-flex justify-content-between">
+        <div class="card-footer d-flex justify-content-between py-1">
             <span class="m-0 text-right">{{comment.user.name}} - {{format_date comment.comment_date}}</span>
         </div>
     </div>
     {{/each}}
-    <p>Add Comment</p>
   </div>
 </div>
 

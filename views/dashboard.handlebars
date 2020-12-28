@@ -53,7 +53,7 @@
                 <div class="card-body">
                     <p>{{first_sentence comment.content}}</p>
                     <a href="/view-post/{{comment.post.id}}" class="btn btn-primary">View</a>
-                    <a href="#" class="btn btn-primary">Delete</a>
+                    <button data-commentid="{{comment.id}}" class="btn btn-primary delete-comment-button">Delete</button>
                 </div>
             </div>
             {{/each}}
