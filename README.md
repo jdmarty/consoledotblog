@@ -1,3 +1,38 @@
+# Console Dot Blog
+
+## Description
+
+CONSOLE DOT BLOG is a software and technology blogging platform where users can view articles written by software developers of all skill levels from around the world that makes it easy to write, view, and comment on articles on a variety of code related topics
+
+## Links
+
+- [Repository](https://github.com/jdmarty/consoledotblog)
+- [Deployed]()
+
+## How To Use
+
+### Logging In
+1. Click the Login button on the right side of the navigation bar to be directed to the login page
+2. For users with existing accounts, enter your email address and password and click the Login button
+3. For new users, click the Sign Up tag on the login panel and enter your desired username, email, and password, then click the Sign Up button to create an account
+
+### Homepage
+On the home page, click the View button under any post read that article and view any associated comments. Articles are sorted by the date of the most recent update
+
+### Commenting
+To comment on a post, click the Comment button in the bottom right corner of a post, then enter your comment in the text field that appears below and click submit. Note that comments can only be created by logged in users
+
+### Writing a Post
+To create a new post, log in and navigate to the Dashboard using the navbar links. Once on your dashboard, enter the title and content of your new post in the Create a Post panel and click submit
+
+### Updating a Post
+To update a post, navigate to your dashboard and click the Edit button under that post in your My Posts section. If you do not see the post, click load more to load additional, older posts. The content of the post will then be transferred to the Update this Post panel where any desired changed can be made to the title or content. Click the update button when you are satisfied with the edits you hve made
+
+### Deleting a Post or Comment
+To delete a post, navigate to your dashboard and click the Delete button under that post or comment in your My Posts or My Comments section. If you do not see the post, click load more to load additional, older posts.
+
+---------------------------------------------------------------------------------------------------
+
 # 14 Model-View-Controller (MVC): Tech Blog
 
 ## Your Task
