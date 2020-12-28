@@ -1,0 +1,17 @@
+<div class="card my-2">
+    <div class="card-header d-flex justify-content-between px-2">
+        <span class="lead m-0">{{title}}</span>
+        {{#if updated_date}}
+        <span class="m-0 text-right">{{format_dateShort updated_date}}</span>
+        {{else}}
+        <span class="m-0 text-right">{{format_dateShort post_date}}</span>
+        {{/if}}
+        
+    </div>
+    <div class="card-body">
+        <p>{{first_sentence content}}</p>
+        <a href="/view-post/{{id}}" class="btn btn-primary">View</a>
+        <button data-postid="{{id}}" class="btn btn-primary edit-post-button">Edit</button>
+        <button data-postid="{{id}}" class="btn btn-primary delete-post-button">Delete</button>
+    </div>
+</div>

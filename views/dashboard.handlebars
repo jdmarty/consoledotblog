@@ -21,23 +21,7 @@
         <h2 class="text-center">My Posts</h2>
         <div class="dash-posts rounded">
             {{#each userPosts as |post|}}
-            <div class="card my-2">
-                <div class="card-header d-flex justify-content-between px-2">
-                    <span class="lead m-0">{{post.title}}</span>
-                    {{#if post.updated_date}}
-                    <span class="m-0 text-right">{{format_dateShort post.updated_date}}</span>
-                    {{else}}
-                    <span class="m-0 text-right">{{format_dateShort post.post_date}}</span>
-                    {{/if}}
-                    
-                </div>
-                <div class="card-body">
-                    <p>{{first_sentence post.content}}</p>
-                    <a href="/view-post/{{post.id}}" class="btn btn-primary">View</a>
-                    <button data-postid="{{post.id}}" class="btn btn-primary edit-post-button">Edit</button>
-                    <button data-postid="{{post.id}}" class="btn btn-primary delete-post-button">Delete</button>
-                </div>
-            </div>
+            {{> dashPost}}
             {{/each}}
         </div>
     </div>
@@ -45,17 +29,7 @@
         <h2 class="text-center">My Comments</h2>
         <div class="dash-comments rounded">
             {{#each userComments as |comment|}}
-            <div class="card my-2">
-                <div class="card-header d-flex justify-content-between px-2">
-                    <span class="lead m-0">{{comment.post.title}}</span>
-                    <span class="m-0 text-right">{{format_dateShort comment.comment_date}}</span>
-                </div>
-                <div class="card-body">
-                    <p>{{first_sentence comment.content}}</p>
-                    <a href="/view-post/{{comment.post.id}}" class="btn btn-primary">View</a>
-                    <button data-commentid="{{comment.id}}" class="btn btn-primary delete-comment-button">Delete</button>
-                </div>
-            </div>
+            {{> dashComment}}
             {{/each}}
         </div>
     </div>

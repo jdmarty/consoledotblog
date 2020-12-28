@@ -1,0 +1,11 @@
+<div class="card my-2">
+    <div class="card-header d-flex justify-content-between px-2">
+        <span class="lead m-0">{{post.title}}</span>
+        <span class="m-0 text-right">{{format_dateShort comment_date}}</span>
+    </div>
+    <div class="card-body">
+        <p>{{first_sentence content}}</p>
+        <a href="/view-post/{{post.id}}" class="btn btn-primary">View</a>
+        <button data-commentid="{{id}}" class="btn btn-primary delete-comment-button">Delete</button>
+    </div>
+</div>
