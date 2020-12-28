@@ -18,8 +18,9 @@ const sess = {
   secret: 'Super secret secret',
   cookie: {
     //expire session after 30 minutes
-    maxAge: 1800000
+    maxAge: 1800000,
   },
+  rolling: true,
   resave: false,
   saveUninitialized: true,
   store: new SequelizeStore({
