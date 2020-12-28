@@ -13,13 +13,18 @@
             {{else}}
             <span class="m-0 text-left">Posted by {{post.user.name}} on {{format_date post.post_date}}</span>
             {{/if}}
+            {{#if logged_in}}
             <button class="btn btn-primary" id="leave-comment">Leave Comment</button>
+            {{else}}
+            <a href="/login" class="btn btn-primary">Leave Comment</a>
+            {{/if}}
         </div>
     </div>
     <hr>
   </div>
 
   <div class="col-12 px-2 px-md-5">
+    {{#if logged_in}}
     <div class="card my-2 d-none" id="new-comment">
         <textarea class="form-control" rows="5" placeholder="Leave a comment here" id="comment-content"></textarea>
         <div class="card-footer py-1">
@@ -27,6 +32,7 @@
             <a href="/view-post/{{post.id}}" class="btn btn-primary">Cancel</a>
         </div>
     </div>
+    {{/if}}
     {{#each comments as |comment|}}
     {{> viewComment}}
     {{/each}}
