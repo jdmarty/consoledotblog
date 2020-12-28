@@ -7,7 +7,7 @@
         <div class="card-body">
             <p class="lead">{{post.content}}</p>
         </div>
-        <div class="card-footer d-flex justify-content-between">
+        <div class="card-footer d-flex justify-content-between align-content-middle">
             {{#if post.updated_date}}
              <span class="m-0 text-left">Updated by {{post.user.name}} on {{format_date post.updated_date}}</span>
             {{else}}
@@ -28,14 +28,7 @@
         </div>
     </div>
     {{#each comments as |comment|}}
-    <div class="card my-2">
-        <div class="card-body pb-0">
-            <p>{{comment.content}}</p>
-        </div>
-        <div class="card-footer d-flex justify-content-between py-1">
-            <span class="m-0 text-right">{{comment.user.name}} - {{format_date comment.comment_date}}</span>
-        </div>
-    </div>
+    {{> viewComment}}
     {{/each}}
   </div>
 </div>
