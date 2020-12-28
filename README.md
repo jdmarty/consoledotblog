@@ -9,7 +9,7 @@ CONSOLE DOT BLOG is a software and technology blogging platform where users can 
 ## Links
 
 - [Repository](https://github.com/jdmarty/consoledotblog)
-- [Deployed]()
+- [Deployed](https://still-crag-96450.herokuapp.com/)
 
 ## How To Use
 
