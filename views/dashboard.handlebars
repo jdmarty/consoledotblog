@@ -3,7 +3,7 @@
 {{!-- Content panel containing three columns for create post form, my posts, and my comments --}}
 <div class="row p-md-2 p-0 dash-content">
     {{!-- Create and edit post panel --}}
-    <div class="col-lg-6 col-12 bg-primary text-white rounded py-2 my-0 post-field">
+    <section class="col-lg-6 col-12 bg-primary text-white rounded py-2 my-0 post-field">
         <h2 class="text-center" id="banner">Create a Post</h2>
         {{!-- Form to create a post --}}
         <form>
@@ -21,9 +21,9 @@
             <button type="submit" id="update-post-button" class="btn btn-secondary d-none">Update</button>
             <a href="/dashboard" id="cancel-update-button" class="btn btn-secondary d-none">Cancel</a>
         </form>
-    </div>
+    </section>
     {{!-- My Posts panel --}}
-    <div class="col-lg-3 col-md-6 col-sm-12 my-lg-0 my-2">
+    <section class="col-lg-3 col-md-6 col-sm-12 my-lg-0 my-2">
         <h2 class="text-center">My Posts</h2>
         {{!-- Every post rendered by engine will be appended here --}}
         <div class="dash-posts rounded">
@@ -32,9 +32,9 @@
             {{/each}}
             <a href="/dashboard?post_limit={{postLimit}}">Load More</a>
         </div>
-    </div>
+    </section>
     {{!-- My Comments panel --}}
-    <div class="col-lg-3 col-md-6 col-sm-12 my-0">
+    <section class="col-lg-3 col-md-6 col-sm-12 my-0">
         <h2 class="text-center">My Comments</h2>
         {{!-- Every comment rendered by engine will be rendered here --}}
         <div class="dash-comments rounded">
@@ -43,7 +43,7 @@
             {{/each}}
             <a href="/dashboard?comment_limit={{commentLimit}}">Load More</a>
         </div>
-    </div>
+    </section>
 </div>
 
 

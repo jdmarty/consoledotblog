@@ -1,6 +1,6 @@
-<div class="card my-2">
+<article class="card my-2">
     {{!-- Card header with two evenly spaced spans --}}
-    <div class="card-header d-flex justify-content-between px-0 px-sm-2">
+    <header class="card-header d-flex justify-content-between px-0 px-sm-2">
         {{!-- Post title --}}
         <span class="lead m-0">{{title}}</span>
         {{!-- Poster and updated or original post date --}}
@@ -9,11 +9,11 @@
         {{else}}
         <span class="m-0 text-right">Posted by {{user.name}} on {{format_date post_date}}</span>
         {{/if}}
-    </div>
+    </header>
     {{!-- Card body with post content and link to view post --}}
-    <div class="card-body">
+    <main class="card-body">
         {{!-- helper function returns first sentence of content --}}
         <p>{{first_sentence content}}</p>
         <a href="/view-post/{{id}}" class="btn btn-primary">View Post</a>
-    </div>
-</div>
+    </main>
+</article>

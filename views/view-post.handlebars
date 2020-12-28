@@ -1,17 +1,17 @@
 <div class="row justify-content-center p-0">
   {{!-- Panel to show original post --}}
-  <div class="col-12 px-0 px-md-3">	
-    <div class="card my-2">
+  <section class="col-12 px-0 px-md-3">	
+    <article class="card my-2">
         {{!-- Card header for post title --}}
-        <div class="card-header">
+        <header class="card-header">
             <h2 class="display-4 text-center m-0">{{post.title}}</h2>
-        </div>
+        </header>
         {{!-- Card body to contain post content --}}
-        <div class="card-body">
+        <main class="card-body">
             <p class="lead">{{post.content}}</p>
-        </div>
+        </main>
         {{!-- Card footer containing evenly spaced spans for post details and comment buttons --}}
-        <div class="card-footer d-flex justify-content-between align-content-middle">
+        <footer class="card-footer d-flex justify-content-between align-content-middle">
             {{!-- Display update or posted date --}}
             {{#if post.updated_date}}
              <span class="m-0 text-left">Updated by {{post.user.name}} on {{format_date post.updated_date}}</span>
@@ -24,12 +24,12 @@
             {{else}}
             <a href="/login" class="btn btn-primary">Leave Comment</a>
             {{/if}}
-        </div>
-    </div>
+        </footer>
+    </article>
     <hr>
-  </div>
+  </section>
   {{!-- Panel to create a new comment, hidden until button above is pressed --}}
-  <div class="col-12 px-2 px-md-5">
+  <section class="col-12 px-2 px-md-5">
     {{!-- If the user is logged in render the comment creation panel --}}
     {{#if logged_in}}
     <div class="card my-2 d-none" id="new-comment">
@@ -45,7 +45,7 @@
     {{#each comments as |comment|}}
     {{> viewComment}}
     {{/each}}
-  </div>
+  </section>
 </div>
 
 

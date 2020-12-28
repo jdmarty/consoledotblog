@@ -4,19 +4,19 @@
 {{!-- Main content panel --}}
 <div class="row">
   {{!-- Column to show new and recently updated posts --}}
-  <div class="col-md-6 col-12 px-0 px-md-3">
+  <section class="col-md-6 col-12 px-0 px-md-3">
     <h2 class="text-center">New Posts</h2>
     {{#each posts as |post|}}
     {{> homePost}}
     {{/each}}
-  </div>
+  </section>
   {{!-- Column to show only recently updated posts --}}
-  <div class="col-md-6 col-12 px-0 px-md-3">
+  <section class="col-md-6 col-12 px-0 px-md-3">
     <h2 class="text-center">Recently Updated Posts</h2>
     {{#each posts as |post|}}
       {{#if post.updated_date}}
       {{> homePost}}
       {{/if}}
     {{/each}}
-  </div>
+  </section>
 </div>
