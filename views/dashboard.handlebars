@@ -1,6 +1,6 @@
-<h1 class="text-center my-2">My Dashboard</h1>
+<h1 class="text-center m-2 d-none d-sm-block">My Dashboard</h1>
 <hr>
-<div class="row p-2 dash-content">
+<div class="row p-md-2 p-0 dash-content">
     <div class="col-lg-6 col-12 bg-primary text-white rounded py-2 my-0 post-field">
         <h2 class="text-center" id="banner">Create a Post</h2>
         <form>
@@ -17,7 +17,7 @@
             <a href="/dashboard" id="cancel-update-button" class="btn btn-secondary d-none">Cancel</a>
         </form>
     </div>
-    <div class="col-lg-3 col-md-6 col-sm-12">
+    <div class="col-lg-3 col-md-6 col-sm-12 my-lg-0 my-2">
         <h2 class="text-center">My Posts</h2>
         <div class="dash-posts rounded">
             {{#each userPosts as |post|}}
@@ -41,7 +41,7 @@
             {{/each}}
         </div>
     </div>
-    <div class="col-lg-3 col-md-6 col-sm-12">
+    <div class="col-lg-3 col-md-6 col-sm-12 my-0">
         <h2 class="text-center">My Comments</h2>
         <div class="dash-comments rounded">
             {{#each userComments as |comment|}}
