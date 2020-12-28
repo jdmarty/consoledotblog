@@ -4,6 +4,8 @@
 
 CONSOLE DOT BLOG is a software and technology blogging platform where users can view articles written by software developers of all skill levels from around the world that makes it easy to write, view, and comment on articles on a variety of code related topics
 
+![Homepage Image](https://github.com/jdmarty/consoledotblog/blob/main/public/images/homepage.PNG)
+
 ## Links
 
 - [Repository](https://github.com/jdmarty/consoledotblog)
@@ -16,6 +18,8 @@ CONSOLE DOT BLOG is a software and technology blogging platform where users can 
 2. For users with existing accounts, enter your email address and password and click the Login button
 3. For new users, click the Sign Up tag on the login panel and enter your desired username, email, and password, then click the Sign Up button to create an account
 
+![Login Image](https://github.com/jdmarty/consoledotblog/blob/main/public/images/login.PNG)
+
 ### Homepage
 On the home page, click the View button under any post read that article and view any associated comments. Articles are sorted by the date of the most recent update
 
@@ -24,6 +28,8 @@ To comment on a post, click the Comment button in the bottom right corner of a p
 
 ### Writing a Post
 To create a new post, log in and navigate to the Dashboard using the navbar links. Once on your dashboard, enter the title and content of your new post in the Create a Post panel and click submit
+
+![Dashboard Image](https://github.com/jdmarty/consoledotblog/blob/main/public/images/dashboard.PNG)
 
 ### Updating a Post
 To update a post, navigate to your dashboard and click the Edit button under that post in your My Posts section. If you do not see the post, click load more to load additional, older posts. The content of the post will then be transferred to the Update this Post panel where any desired changed can be made to the title or content. Click the update button when you are satisfied with the edits you hve made
