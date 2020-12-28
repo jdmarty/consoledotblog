@@ -33,7 +33,7 @@ router.post('/create', async (req, res) => {
 router.post('/login', async (req, res) => {
   try {
     //find a user with that email
-    const userData = await User.findOne({ where: { email: req.body.email } });
+    const userData = await User.findAll({ where: { email: req.body.email } });
     //if no user is found with that email, send an error message and return
     if (!userData) {
       res
