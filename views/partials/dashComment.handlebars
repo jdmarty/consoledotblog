@@ -1,11 +1,18 @@
 <div class="card my-2">
+    {{!-- Header with two evenly spaced spans --}}
     <div class="card-header d-flex justify-content-between px-2">
+        {{!-- Title of post where comment was made --}}
         <span class="lead m-0">{{post.title}}</span>
+        {{!-- Date of comment post --}}
         <span class="m-0 text-right">{{format_dateShort comment_date}}</span>
     </div>
+    {{!-- Body with summary and links to view or delete a comment --}}
     <div class="card-body">
+        {{!-- first sentence of comment --}}
         <p>{{first_sentence content}}</p>
+        {{!-- Link to view original post where comment was made --}}
         <a href="/view-post/{{post.id}}" class="btn btn-primary">View</a>
+        {{!-- Button to delete a comment --}}
         <button data-commentid="{{id}}" class="btn btn-primary delete-comment-button">Delete</button>
     </div>
 </div>

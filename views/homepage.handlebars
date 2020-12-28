@@ -1,13 +1,16 @@
-<!-- Loop over each object in the projects array -->
-<h1 class="text-center m-2 d-none d-sm-block">Welcome to Console Dot Blog!</h1>
+{{!-- Header to be displayed only on md or larger screens --}}
+<h1 class="text-center m-2 d-none d-sm-block display-4">Welcome to Console Dot Blog!</h1>
 <hr class="d-none d-sm-block">
+{{!-- Main content panel --}}
 <div class="row">
+  {{!-- Column to show new and recently updated posts --}}
   <div class="col-md-6 col-12 px-0 px-md-3">
     <h2 class="text-center">New Posts</h2>
     {{#each posts as |post|}}
     {{> homePost}}
     {{/each}}
   </div>
+  {{!-- Column to show only recently updated posts --}}
   <div class="col-md-6 col-12 px-0 px-md-3">
     <h2 class="text-center">Recently Updated Posts</h2>
     {{#each posts as |post|}}

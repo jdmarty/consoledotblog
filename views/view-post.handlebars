@@ -1,18 +1,24 @@
 <div class="row justify-content-center p-0">
+  {{!-- Panel to show original post --}}
   <div class="col-12 px-0 px-md-3">	
     <div class="card my-2">
+        {{!-- Card header for post title --}}
         <div class="card-header">
             <h2 class="display-4 text-center m-0">{{post.title}}</h2>
         </div>
+        {{!-- Card body to contain post content --}}
         <div class="card-body">
             <p class="lead">{{post.content}}</p>
         </div>
+        {{!-- Card footer containing evenly spaced spans for post details and comment buttons --}}
         <div class="card-footer d-flex justify-content-between align-content-middle">
+            {{!-- Display update or posted date --}}
             {{#if post.updated_date}}
              <span class="m-0 text-left">Updated by {{post.user.name}} on {{format_date post.updated_date}}</span>
             {{else}}
             <span class="m-0 text-left">Posted by {{post.user.name}} on {{format_date post.post_date}}</span>
             {{/if}}
+            {{!-- Display button allowing the user to make a comment or a link to the login page --}}
             {{#if logged_in}}
             <button class="btn btn-primary" id="leave-comment">Leave Comment</button>
             {{else}}
@@ -22,11 +28,14 @@
     </div>
     <hr>
   </div>
-
+  {{!-- Panel to create a new comment, hidden until button above is pressed --}}
   <div class="col-12 px-2 px-md-5">
+    {{!-- If the user is logged in render the comment creation panel --}}
     {{#if logged_in}}
     <div class="card my-2 d-none" id="new-comment">
+        {{!-- Comment content input --}}
         <textarea class="form-control" rows="5" placeholder="Leave a comment here" id="comment-content"></textarea>
+        {{!-- Footer containing button to submit and link to refresh page on cancel--}}
         <div class="card-footer py-1">
             <button data-postid="{{post.id}}" class="btn btn-primary" id="create-comment">Submit</button>
             <a href="/view-post/{{post.id}}" class="btn btn-primary">Cancel</a>

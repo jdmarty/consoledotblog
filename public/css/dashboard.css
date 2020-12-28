@@ -1,3 +1,4 @@
+/* CSS to create scrollable post list */
 .dash-posts, .dash-comments {
     max-height: 67vh;
     overflow: auto;

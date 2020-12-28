@@ -5,7 +5,7 @@ const withAuth = require('../utils/auth');
 //homepage route
 router.get('/', async (req, res) => {
   try {
-    //retrieve all posts and sort by post date
+    //retrieve all posts and sort by recent date
     const postsData = await Post.findAll({
       //include user and comment
       include: [
@@ -17,7 +17,7 @@ router.get('/', async (req, res) => {
       ],
       //sort by most recent post
       order: [['recent_date', 'DESC']],
-      //limit set by query or defaults to 20
+      //limit 20 posts
       limit: 20,
     });
     //serialize new post data

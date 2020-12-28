@@ -15,14 +15,17 @@
       {{!-- Login panel --}}
       <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="login-tab">
         <form class="form login-form">
+          {{!-- Email input --}}
           <div class="form-group">
             <label class="form-label lead" for="email-login">Email:</label>
             <input class="form-control login-input" type="text" id="email-login" />
           </div>
+          {{!-- Password entry --}}
           <div class="form-group">
             <label class="form-label lead" for="password-login">Password:</label>
             <input class="form-control login-input" type="password" id="password-login" />
           </div>
+          {{!-- Login button --}}
           <div class="form-group">
             <button class="btn btn-secondary" type="submit">Login</button>
           </div>
@@ -31,18 +34,27 @@
       {{!-- Sign Up Panel --}}
       <div class="tab-pane fade" id="signup" role="tabpanel" aria-labelledby="signup-tab">
         <form class="form signup-form">
+          {{!-- Name input --}}
           <div class="form-group">
             <label class="form-label lead" for="name-signup">Name:</label>
             <input class="form-control login-input" type="text" id="name-signup" />
           </div>
+          {{!-- email input --}}
           <div class="form-group">
             <label class="form-label lead" for="email-signup">Email:</label>
             <input class="form-control login-input" type="text" id="email-signup" />
           </div>
+          {{!-- password input --}}
           <div class="form-group">
             <label class="form-label lead" for="password-signup">Password:</label>
             <input class="form-control login-input" type="password" id="password-signup" />
           </div>
+          {{!-- confirm password input --}}
+          <div class="form-group">
+            <label class="form-label lead" for="password-signup">Confirm Password:</label>
+            <input class="form-control login-input" type="password" id="password-confirm" />
+          </div>
+          {{!-- Signup button --}}
           <div class="form-group">
             <button class="btn btn-secondary" type="submit">Sign Up</button>
           </div>

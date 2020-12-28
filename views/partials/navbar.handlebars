@@ -1,26 +1,33 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    {{!-- brand with home link --}}
     <a class="navbar-brand" href="/">CONSOLE.BLOG</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+    {{!-- toggler for screens smaller than lg --}}
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-
-    <div class="collapse navbar-collapse" id="navbarColor01">
+    {{!-- main navbar content --}}
+    <div class="collapse navbar-collapse" id="navbar">
+        {{!-- List of nabar links, active link selected by data from response render --}}
         <ul class="navbar-nav mr-auto">
+            {{!-- List item storing nav link --}}
             <li class="nav-item {{#if home}}active{{/if}}">
                 <a class="nav-link" href="/">Home
                     {{#if home}}<span class="sr-only">(current)</span>{{/if}}
                 </a>
             </li>
+            {{!-- List item storing nav link --}}
             <li class="nav-item {{#if dashboard}}active{{/if}}">
                 <a class="nav-link" href="/dashboard">Dashboard
                     {{#if dashboard}}<span class="sr-only">(current)</span>{{/if}}
                 </a>
             </li>
         </ul>
+        {{!-- If user is logged in, show their name on large screens and a logout button --}}
         {{#if logged_in}}
-        {{!-- <span class="mx-2">Hello, {{user_name}}!</span> --}}
+        <span class="mr-2 text-white d-none d-lg-inline">Hello, {{user_name}}!</span>
         <button class="btn btn-secondary my-2 my-sm-0" type="submit" id="logout">Logout</button>
         {{else}}
+        {{!-- Otherwise show a link to the login page --}}
         <a href='/login'>
             {{#if login}}<span class="sr-only">(current)</span>{{/if}}
             <button class="btn btn-secondary my-2 my-sm-0" type="submit">Login</button>
