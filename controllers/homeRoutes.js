@@ -4,7 +4,7 @@ const withAuth = require('../utils/auth');
 const { Op } = require('sequelize');
 
 //function to get post data
-const getPosts = async (params) => {
+const getPosts = async (params, order='recent_date') => {
   const postsData = await Post.findAll({
     where: params,
       //include user and comment
@@ -16,7 +16,7 @@ const getPosts = async (params) => {
         },
       ],
       //sort by most recent post
-      order: [['recent_date', 'DESC']],
+      order: [[order, 'DESC']],
       //limit 20 posts
       limit: 25,
     });
@@ -33,15 +33,15 @@ router.get('/', async (req, res) => {
     if (!req.query.sort) {
       posts = await getPosts({})
       sortOption = "All Posts"
-    // sorting by new returns posts without updated_date
+    // sorting by new returns posts sorted by post date
     } else if (req.query.sort === 'new') {
-      posts = await getPosts({ updated_date: { [Op.is]: null } });
+      posts = await getPosts({}, 'post_date');
       sortOption = 'New';
     // sorting by updated returns posts with updated_date
     } else if (req.query.sort === 'updated') {
       posts = await getPosts({ updated_date: { [Op.not]: null } });
       sortOption = 'Updated';
-    // sorting by comments returns all posts then 
+    // sorting by comments returns all posts then sorts by number of comments
     } else if (req.query.sort === 'comments') {
       posts = await (await getPosts({})).sort((a,b) => b.comments.length - a.comments.length)
       sortOption = 'Comments';
