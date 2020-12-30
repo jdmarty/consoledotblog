@@ -1,7 +1,7 @@
 {
-  "name": "crowd-funding",
+  "name": "console-dot-blog",
   "version": "1.0.0",
-  "description": "",
+  "description": "Tech blog website using Node, MySQL, and Handlebars in an MVC paradigm",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,7 +9,7 @@
     "seed": "node seeds/seed.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Joshua M",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.0.0",
