@@ -1,12 +1,12 @@
 const router = require('express').Router();
 const { User, Post, Comment } = require('../models');
 const withAuth = require('../utils/auth');
+const { Op } = require('sequelize');
 
-//homepage route
-router.get('/', async (req, res) => {
-  try {
-    //retrieve all posts and sort by recent date
-    const postsData = await Post.findAll({
+//function to get post data
+const getPosts = async (params) => {
+  const postsData = await Post.findAll({
+    where: params,
       //include user and comment
       include: [
         { model: User, attributes: ['id', 'name'] },
@@ -18,17 +18,41 @@ router.get('/', async (req, res) => {
       //sort by most recent post
       order: [['recent_date', 'DESC']],
       //limit 20 posts
-      limit: 20,
+      limit: 25,
     });
-    //serialize new post data
-    const posts = postsData.map((post) => post.get({ plain: true }));
-    
+  //serialize new post data
+  const posts = postsData.map((post) => post.get({ plain: true }));
+  return posts
+}
+
+//homepage route
+router.get('/', async (req, res) => {
+  try {
+    let posts, sortOption
+    // Raw route returns all posts
+    if (!req.query.sort) {
+      posts = await getPosts({})
+      sortOption = "All Posts"
+    // sorting by new returns posts without updated_date
+    } else if (req.query.sort === 'new') {
+      posts = await getPosts({ updated_date: { [Op.is]: null } });
+      sortOption = 'New';
+    // sorting by updated returns posts with updated_date
+    } else if (req.query.sort === 'updated') {
+      posts = await getPosts({ updated_date: { [Op.not]: null } });
+      sortOption = 'Updated';
+    // sorting by comments returns all posts then 
+    } else if (req.query.sort === 'comments') {
+      posts = await (await getPosts({})).sort((a,b) => b.comments.length - a.comments.length)
+      sortOption = 'Comments';
+    }
     //send the new data
     res.render('homepage', {
       logged_in: req.session.logged_in,
       user_name: req.session.user_name,
       home: true,
       posts,
+      sortOption
     });
   } catch (err) {
     res.status(500).json(err);
